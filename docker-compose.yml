@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  mysql_db:
+    image: mysql:8.0
+    container_name: blogpy_mysql
+    volumes:
+      - blogpy_mysql:/var/lib/mysql  # مطابق با نام volume ایجاد شده
+      - ./mysql_init:/docker-entrypoint-initdb.d
+    restart: always
+    env_file: .env
+    ports:
+      - "3307:3306"
+    networks:
+      - blogpy_network  # مطابق با نام network ایجاد شده
+
+volumes:
+  blogpy_mysql:  # نام volume باید یکسان باشد
+    external: true
+
+networks:
+  blogpy_network:
+    external: true

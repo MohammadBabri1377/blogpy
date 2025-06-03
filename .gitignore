@@ -2,3 +2,13 @@
 venv/
 #Migrations
 blog/migrations
+
+
+# Credentials
+.env
+
+# Static fils
+files/
+
+# Database
+mysql_init
